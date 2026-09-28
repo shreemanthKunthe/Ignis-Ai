@@ -1,38 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import InteractiveAIHead from './InteractiveAIHead';
 import GetStartedButton from './GetStartedButton';
 
 /**
- * Ignis AI Hero Section
+ * Ignis AI Hero Section with Sticky Scroll Stacking
  * 
- * Exact 1:1 match with 1920 x 1052 Design Artboard:
- * - Canvas proportion: 1920 x 1052
- * - Pure white background (#FFFFFF)
- * - AI Head positioned at Left: ~28.65vw (550px), Top: ~6.0vh (63px), Width: ~86.35vw (1658px)
- *   with grounded neck reaching bottom edge and top passing under the frosted navbar
- * - Lower-left anchored editorial block (Left: ~3.33vw / 64px, Bottom: ~8.03vh / 84.5px):
- *   Line 1: "Less manual work."
- *   Line 2: "More capacity to grow."
- * - Generous 2-line editorial subtitle
- * - Radiant coral pill button: "Talk to the builder →"
- * - "SCROLL DOWN" indicator anchored on the right edge
+ * Sticky Scroll System:
+ * - Locked firmly at top: 0 with 100vh height (position: sticky)
+ * - Zero zoom-in or scale distortion — AI Head and typography stay stationary and sharp
+ * - As the user scrolls, the next section (ProblemSolution) slides up smoothly directly over the Hero
+ * - Hero unmounts/hides visibility when user is deep into main content, preserving 60fps performance
  */
 export default function Hero({ isReady = true }) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Keep hero visible during the sticky overlap phase; hide when deep into the rest of the page
+      const threshold = window.innerHeight * 1.25;
+      const shouldBeVisible = window.scrollY < threshold;
+      setIsVisible((prev) => (prev !== shouldBeVisible ? shouldBeVisible : prev));
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section
       id="hero"
+      className="hero-sticky-scene"
       aria-label="Ignis AI Hero"
       style={{
-        position: 'relative',
+        position: 'sticky',
+        top: 0,
         height: '100vh',
         minHeight: '680px',
         maxHeight: '1052px',
         width: '100%',
         backgroundColor: '#FFFFFF',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        zIndex: 1,
+        visibility: isVisible ? 'visible' : 'hidden',
+        pointerEvents: isVisible ? 'auto' : 'none'
       }}
     >
-      {/* 1. Center-Right Interactive AI Head (1920x1052 Proportion) */}
+      {/* 1. Center-Right Interactive AI Head (1920x1052 Artboard Proportion, Zero Zoom Distortion) */}
       <div
         className="hero-head-wrapper"
         style={{
@@ -110,7 +124,7 @@ export default function Hero({ isReady = true }) {
         </div>
       </div>
 
-      {/* 3. "SCROLL DOWN" Indicator matching the screenshot */}
+      {/* 3. "SCROLL DOWN" Indicator matching the artboard */}
       <div
         className="hero-scroll-indicator"
         style={{
@@ -132,7 +146,7 @@ export default function Hero({ isReady = true }) {
         SCROLL DOWN
       </div>
 
-      {/* Animation & Responsive adjustments */}
+      {/* Entrance Animations & Responsive Styling */}
       <style>{`
         @keyframes heroCoralToBlack {
           0% {
@@ -184,6 +198,7 @@ export default function Hero({ isReady = true }) {
 
         @media (max-width: 1024px) {
           #hero {
+            position: relative !important;
             height: auto !important;
             min-height: 100vh !important;
             max-height: none !important;

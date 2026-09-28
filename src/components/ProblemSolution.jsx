@@ -45,10 +45,8 @@ export default function ProblemSolution() {
       <div id="what-we-do" style={{ position: 'absolute', top: 0, left: 0 }} aria-hidden="true" />
 
       <div
+        className="container-wide"
         style={{
-          width: '100%',
-          maxWidth: '1520px',
-          margin: '0 auto',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

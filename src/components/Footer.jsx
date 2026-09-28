@@ -7,11 +7,11 @@ import React, { useMemo } from 'react';
  * - Large rounded container card
  * - Serif Ignis brand lockup with flame icon
  * - 2 clean navigation columns (Explore / How it works / Work / Contact | Privacy Policy / Terms of Service / Cookie Policy)
- * - Bottom copyright: "© 2026, Ignis ltd . All rights reserved." & "Registered in Australia"
+ * - Bottom copyright: "© 2026 Ignis AI. All rights reserved." & "Registered in Australia"
  * - Radiant dot-matrix grid with glowing coral flame heat signature in the center
  */
 export default function Footer() {
-  // Generate dot matrix grid (46 columns x 16 rows) matching Screenshot 1
+  // Generate dot matrix grid (48 columns x 16 rows) matching Screenshot 1
   const dots = useMemo(() => {
     const cols = 48;
     const rows = 16;

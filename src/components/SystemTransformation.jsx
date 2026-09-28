@@ -56,15 +56,7 @@ export default function SystemTransformation() {
     >
       <div id="transformation" style={{ position: 'absolute', top: 0 }} aria-hidden="true" />
 
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1260px',
-          margin: '0 auto',
-          padding: '0 clamp(24px, 5vw, 64px)',
-          boxSizing: 'border-box'
-        }}
-      >
+      <div className="container-wide">
         <RevealOnScroll>
           {/* Split Editorial Header */}
           <header

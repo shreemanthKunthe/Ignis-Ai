@@ -72,15 +72,7 @@ export default function FAQ() {
           '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", system-ui, sans-serif'
       }}
     >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1260px',
-          margin: '0 auto',
-          padding: '0 clamp(24px, 5vw, 64px)',
-          boxSizing: 'border-box'
-        }}
-      >
+      <div className="container-wide">
         <RevealOnScroll>
           <div
             className="faq-split-grid"

@@ -25,18 +25,25 @@ export default function App() {
   };
 
   return (
-    <div className="ignis-app">
+    <div className="ignis-app" style={{ position: 'relative' }}>
       {/* Cinematic Brand Introduction Preloader */}
       <Preloader onComplete={() => setIsPreloaderDone(true)} />
 
-      {/* Floating Navigation (Preserved) */}
+      {/* Floating Navigation */}
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
 
-      {/* Main Content Sections */}
-      <main>
-        {/* 01 LOCKED HERO SECTION */}
-        <Hero isReady={isPreloaderDone} />
+      {/* 01 LOCKED HERO SECTION (Sticky scroll stacking: next section rolls directly over it) */}
+      <Hero isReady={isPreloaderDone} />
 
+      {/* Main Content Sections (Elevated to zIndex: 2 so it smoothly glides on top of Hero) */}
+      <main
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          backgroundColor: 'var(--ignis-paper)',
+          boxShadow: '0 -20px 48px rgba(0, 0, 0, 0.06)'
+        }}
+      >
         {/* 02 LOCKED WHO WE ARE STATEMENT (VIBRANT EDITORIAL) */}
         <ProblemSolution />
 
@@ -62,7 +69,7 @@ export default function App() {
         <Founder />
       </main>
 
-      {/* 10 FOOTER (Screenshot 1) */}
+      {/* 10 FOOTER (Reverted to original Screenshot 1 card layout) */}
       <Footer />
     </div>
   );
