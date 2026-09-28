@@ -1,0 +1,63 @@
+:root {
+  /* Ignis Core Colors (Light / Default) */
+  --ignis-paper: #FDFAF8;
+  --ignis-ink: #1C1210;
+  --ignis-coral: #E8483D;
+  --ignis-coral-deep: #C93227;
+  --ignis-blush: #FFF6F3;
+  --ignis-line: #EBDDD8;
+  --ignis-muted: #7A6F6D;
+  --ignis-card: #FFFFFF;
+  --ignis-pill-bg: #140E0D;
+  --ignis-pill-text: #FDFAF8;
+  --ignis-pill-border: rgba(255, 255, 255, 0.12);
+  --ignis-pill-divider: rgba(255, 255, 255, 0.2);
+
+  /* Status Colors */
+  --ignis-status-pass: #2F7D57;
+  --ignis-status-building: #F7C9A8;
+
+  /* Typography */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-headline: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-text: Karla, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  /* Spacing Scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --ignis-paper: #0D0807;
+  --ignis-ink: #F7F3EE;
+  --ignis-coral: #FF5A4E;
+  --ignis-coral-deep: #DE3B2F;
+  --ignis-blush: #17100F;
+  --ignis-line: #2B1E1C;
+  --ignis-muted: #9E918E;
+  --ignis-card: #150F0E;
+  --ignis-pill-bg: #1B1312;
+  --ignis-pill-text: #F7F3EE;
+  --ignis-pill-border: rgba(255, 255, 255, 0.16);
+  --ignis-pill-divider: rgba(255, 255, 255, 0.22);
+}
