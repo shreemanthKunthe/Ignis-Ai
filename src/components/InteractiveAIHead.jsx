@@ -2,98 +2,95 @@ import React, { useEffect, useRef } from 'react';
 
 /**
  * InteractiveAIHead Component
- * 
- * Interactive robot head with 3D perspective parallax and responsive eye pupil
- * tracking that dynamically follows the user's cursor across the viewport.
- * 
- * Uses authentic head asset with deep eye sockets and custom glowing coral pupils
- * that smoothly track mouse coordinates via 60fps requestAnimationFrame lerp.
+ *
+ * Interactive robot head with:
+ * 1. Subtle 3D perspective tilt following the cursor
+ * 2. Small dark pupils inside the eye sockets that track the mouse
+ *
+ * Image: head_v2.png (1024×682) in a 1536:1024 container — fills full width.
+ * Eye centres (source px → container %):
+ *   Left  eye: ~280px X / 1024 = 27.3%,  ~382px Y / 682 * (1024/682) ≈ 57.5%
+ *   Right eye: ~362px X / 1024 = 35.4%,  ~376px Y / 682 * (1024/682) ≈ 56.5%
  */
 export default function InteractiveAIHead() {
-  const containerRef = useRef(null);
-  const headRef = useRef(null);
-  const leftEyeRef = useRef(null);
-  const rightEyeRef = useRef(null);
+  const containerRef  = useRef(null);
+  const headRef       = useRef(null);
+  const leftPupilRef  = useRef(null);
+  const rightPupilRef = useRef(null);
 
   useEffect(() => {
-    // Disable parallax on mobile/touch devices
     const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
     if (isTouch) return;
 
-    let targetX = 0;
-    let targetY = 0;
-    let headX = 0;
-    let headY = 0;
-    let eyeX = 0;
-    let eyeY = 0;
+    let targetX = 0, targetY = 0;
+    let headX   = 0, headY   = 0;
+    let eyeX    = 0, eyeY    = 0;
 
-    const EYE_LERP = 0.22;
     const HEAD_LERP = 0.075;
+    const EYE_LERP  = 0.18;
 
     let rafId = null;
 
-    const handleMouseMove = (e) => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
-      // Normalize coordinates: -1 (left/top) to +1 (right/bottom)
-      targetX = ((e.clientX / width) - 0.5) * 2;
-      targetY = ((e.clientY / height) - 0.5) * 2;
-
+    const onMouseMove = (e) => {
+      targetX = ((e.clientX / window.innerWidth)  - 0.5) * 2;
+      targetY = ((e.clientY / window.innerHeight) - 0.5) * 2;
       targetX = Math.max(-1, Math.min(1, targetX));
       targetY = Math.max(-1, Math.min(1, targetY));
     };
 
-    const handleMouseLeave = () => {
-      targetX = 0;
-      targetY = 0;
-    };
+    const onMouseLeave = () => { targetX = 0; targetY = 0; };
 
-    const updateFrame = () => {
-      // Lerp head motion
+    const tick = () => {
       headX += (targetX - headX) * HEAD_LERP;
       headY += (targetY - headY) * HEAD_LERP;
+      eyeX  += (targetX - eyeX)  * EYE_LERP;
+      eyeY  += (targetY - eyeY)  * EYE_LERP;
 
-      // Lerp eye pupils with high responsiveness
-      eyeX += (targetX - eyeX) * EYE_LERP;
-      eyeY += (targetY - eyeY) * EYE_LERP;
-
-      // Apply subtle 3D tilt and translate to entire head
       if (headRef.current) {
-        const transX = headX * 14;
-        const transY = headY * 8;
-        const rotY = headX * 5.0;
-        const rotX = -headY * 4.0;
-        const rotZ = headX * 1.5;
-
-        headRef.current.style.transform = `translate3d(${transX}px, ${transY}px, 0px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg)`;
+        headRef.current.style.transform =
+          `translate3d(${headX * 14}px, ${headY * 8}px, 0)` +
+          ` rotateX(${-headY * 4}deg) rotateY(${headX * 5}deg) rotateZ(${headX * 1.5}deg)`;
       }
 
-      // Responsive eye pupil translation inside the 3D socket cavities
-      const eyeTransX = eyeX * 16;
-      const eyeTransY = eyeY * 13;
+      // Pupils travel ±4px — visibly tracks without leaving the socket
+      const px = eyeX * 4;
+      const py = eyeY * 4;
 
-      if (leftEyeRef.current) {
-        leftEyeRef.current.style.transform = `translate3d(${eyeTransX}px, ${eyeTransY}px, 0px)`;
+      if (leftPupilRef.current) {
+        leftPupilRef.current.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`;
+      }
+      if (rightPupilRef.current) {
+        rightPupilRef.current.style.transform = `translate(calc(-50% + ${px}px), calc(-50% + ${py}px))`;
       }
 
-      if (rightEyeRef.current) {
-        rightEyeRef.current.style.transform = `translate3d(${eyeTransX}px, ${eyeTransY}px, 0px)`;
-      }
-
-      rafId = requestAnimationFrame(updateFrame);
+      rafId = requestAnimationFrame(tick);
     };
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    document.addEventListener('mouseleave', handleMouseLeave);
-    rafId = requestAnimationFrame(updateFrame);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    document.addEventListener('mouseleave', onMouseLeave);
+    rafId = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseleave', onMouseLeave);
+      cancelAnimationFrame(rafId);
     };
   }, []);
+
+  // Pupil: small dark dot with a very subtle deep-red inner glow
+  // No outer bloom — keeps it inside the socket, not "popping out"
+  const pupilStyle = {
+    position:     'absolute',
+    width:        '8px',
+    height:       '8px',
+    borderRadius: '50%',
+    // Deep dark core matching the black socket, with a subtle crimson inner glow
+    background: 'radial-gradient(circle at 38% 38%, #7A1A14 0%, #1A0A08 65%, #0D0504 100%)',
+    boxShadow:  'inset 0 0 3px rgba(201,50,39,0.5), 0 0 3px 1px rgba(201,50,39,0.2)',
+    transform:  'translate(-50%, -50%)',
+    willChange: 'transform',
+    pointerEvents: 'none',
+  };
 
   return (
     <div
@@ -105,10 +102,9 @@ export default function InteractiveAIHead() {
         aspectRatio: '1536 / 1024',
         perspective: '1200px',
         transformStyle: 'preserve-3d',
-        userSelect: 'none'
+        userSelect: 'none',
       }}
     >
-      {/* Main Head Graphic Container */}
       <div
         ref={headRef}
         className="head-transform-wrapper"
@@ -118,12 +114,12 @@ export default function InteractiveAIHead() {
           height: '100%',
           transformStyle: 'preserve-3d',
           willChange: 'transform',
-          transition: 'none'
+          transition: 'none',
         }}
       >
-        {/* Authentic Head Graphic with Baked HUD Elements */}
+        {/* Robot head image */}
         <img
-          src="/assets/head_interactive.png"
+          src="/assets/head_v2.png"
           alt="Ignis AI System Architecture Character"
           draggable={false}
           style={{
@@ -131,74 +127,23 @@ export default function InteractiveAIHead() {
             height: '100%',
             objectFit: 'contain',
             pointerEvents: 'none',
-            display: 'block'
+            display: 'block',
           }}
         />
 
-        {/* Dynamic Eye Pupil Tracking Layer */}
-        {/* Left Eye: Character perspective left eye (centered at 33.46% X, 50.79% Y in 1536x1024) */}
+        {/* Left eye pupil */}
         <div
           aria-hidden="true"
-          style={{
-            position: 'absolute',
-            left: '33.46%',
-            top: '50.79%',
-            width: '42px',
-            height: '56px',
-            transform: 'translate(-50%, -50%)',
-            pointerEvents: 'none',
-            borderRadius: '50%',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <div
-            ref={leftEyeRef}
-            style={{
-              width: '6px',
-              height: '28px',
-              background: 'linear-gradient(180deg, #FF6A45 0%, #FF3308 100%)',
-              borderRadius: '999px',
-              boxShadow: '0 0 10px #FF3A0C, 0 0 18px rgba(255, 60, 20, 0.95), 0 0 32px rgba(255, 80, 30, 0.6)',
-              willChange: 'transform',
-              transition: 'none'
-            }}
-          />
-        </div>
+          ref={leftPupilRef}
+          style={{ ...pupilStyle, left: '27.3%', top: '57.5%' }}
+        />
 
-        {/* Right Eye: Character center eye (centered at 44.00% X, 50.32% Y in 1536x1024) */}
+        {/* Right eye pupil */}
         <div
           aria-hidden="true"
-          style={{
-            position: 'absolute',
-            left: '44.00%',
-            top: '50.32%',
-            width: '54px',
-            height: '56px',
-            transform: 'translate(-50%, -50%)',
-            pointerEvents: 'none',
-            borderRadius: '50%',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <div
-            ref={rightEyeRef}
-            style={{
-              width: '7px',
-              height: '30px',
-              background: 'linear-gradient(180deg, #FF6A45 0%, #FF3308 100%)',
-              borderRadius: '999px',
-              boxShadow: '0 0 10px #FF3A0C, 0 0 18px rgba(255, 60, 20, 0.95), 0 0 32px rgba(255, 80, 30, 0.6)',
-              willChange: 'transform',
-              transition: 'none'
-            }}
-          />
-        </div>
+          ref={rightPupilRef}
+          style={{ ...pupilStyle, left: '35.4%', top: '56.5%' }}
+        />
       </div>
     </div>
   );

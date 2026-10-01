@@ -31,10 +31,10 @@ export default function NavigationOverlay({ isOpen, onClose }) {
     { label: 'What We Do', href: '#about', number: '01' },
     { label: 'Capabilities', href: '#capabilities', number: '02' },
     { label: 'How It Works', href: '#process', number: '03' },
-    { label: 'Who It Is For', href: '#audience', number: '04' },
-    { label: 'Standards', href: '#philosophy', number: '05' },
-    { label: 'FAQs', href: '#faq', number: '06' },
-    { label: 'Talk to Builder', href: '#founder', number: '07' }
+    // { label: 'Who It Is For', href: '#audience', number: '04' },
+    { label: 'Standards', href: '#philosophy', number: '04' },
+    { label: 'FAQs', href: '#faq', number: '05' },
+    { label: 'Talk to Builder', href: '#founder', number: '06' }
   ];
 
   const handleLinkClick = (href) => {

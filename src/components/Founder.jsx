@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 /**
@@ -76,7 +76,7 @@ export default function Founder() {
                     display: 'inline-block',
                     width: '5px',
                     height: '5px',
-                    backgroundColor: '#FF531B'
+                    backgroundColor: '#C93227'
                   }}
                   aria-hidden="true"
                 />
@@ -181,7 +181,7 @@ export default function Founder() {
                 <a
                   href="mailto:tav@ignisai.com"
                   style={{
-                    color: '#FF531B',
+                    color: '#C93227',
                     textDecoration: 'none',
                     fontWeight: 600
                   }}
@@ -224,7 +224,7 @@ export default function Founder() {
               <div
                 style={{
                   padding: 'clamp(40px, 5vw, 64px) 0',
-                  borderTop: '1px solid #FF531B'
+                  borderTop: '1px solid #C93227'
                 }}
               >
                 <div

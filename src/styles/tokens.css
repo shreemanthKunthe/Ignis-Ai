@@ -2,8 +2,8 @@
   /* Ignis Core Colors (Light / Default) */
   --ignis-paper: #FDFAF8;
   --ignis-ink: #1C1210;
-  --ignis-coral: #E8483D;
-  --ignis-coral-deep: #C93227;
+  --ignis-coral: #C93227;
+  --ignis-coral-deep: #A8261D;
   --ignis-blush: #FFF6F3;
   --ignis-line: #EBDDD8;
   --ignis-muted: #7A6F6D;
@@ -50,8 +50,8 @@
 [data-theme="dark"] {
   --ignis-paper: #0D0807;
   --ignis-ink: #F7F3EE;
-  --ignis-coral: #FF5A4E;
-  --ignis-coral-deep: #DE3B2F;
+  --ignis-coral: #C93227;
+  --ignis-coral-deep: #A8261D;
   --ignis-blush: #17100F;
   --ignis-line: #2B1E1C;
   --ignis-muted: #9E918E;

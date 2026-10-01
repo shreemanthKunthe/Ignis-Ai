@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 /**
@@ -80,6 +80,7 @@ export default function FourStepProcess() {
           '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", system-ui, sans-serif'
       }}
     >
+      <div id="how-it-works" style={{ position: 'absolute', top: 0 }} aria-hidden="true" />
       <div className="container-wide">
         <RevealOnScroll>
           {/* Section Header */}
@@ -109,7 +110,7 @@ export default function FourStepProcess() {
                     display: 'inline-block',
                     width: '5px',
                     height: '5px',
-                    backgroundColor: '#FF531B'
+                    backgroundColor: '#C93227'
                   }}
                   aria-hidden="true"
                 />
@@ -210,7 +211,7 @@ export default function FourStepProcess() {
                         fontWeight: 300,
                         lineHeight: 1,
                         letterSpacing: '-0.04em',
-                        color: isActive ? '#FF531B' : 'var(--ignis-muted)',
+                        color: isActive ? '#C93227' : 'var(--ignis-muted)',
                         marginBottom: '14px',
                         transition: 'color 240ms ease'
                       }}
@@ -221,7 +222,7 @@ export default function FourStepProcess() {
                     style={{
                       width: '28px',
                       height: '2px',
-                      backgroundColor: isActive ? '#FF531B' : 'transparent',
+                      backgroundColor: isActive ? '#C93227' : 'transparent',
                       transition: 'background-color 200ms ease'
                     }}
                   />
@@ -237,7 +238,7 @@ export default function FourStepProcess() {
                       fontWeight: 600,
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
-                      color: isActive ? '#FF531B' : 'var(--ignis-muted)',
+                      color: isActive ? '#C93227' : 'var(--ignis-muted)',
                       marginBottom: '10px',
                       transition: 'color 200ms ease'
                     }}
@@ -318,7 +319,7 @@ export default function FourStepProcess() {
                           style={{
                             width: '4px',
                             height: '4px',
-                            backgroundColor: isActive ? '#FF531B' : 'var(--ignis-line)',
+                            backgroundColor: isActive ? '#C93227' : 'var(--ignis-line)',
                             display: 'inline-block'
                           }}
                         />

@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 
 /**
  * ProblemSolution Component (What We Do / Who We Are)
  * 
  * Exact 1:1 match with user's editorial design screenshot:
- * - Radiant flame orange background (#FF5B20)
+ * - Radiant flame orange background (#C93227)
  * - Top eyebrow: slanted parallelogram icon + 'What we do'
  * - Exact 3-line editorial headline without sentence or word breaks:
  *   Line 1: 'We bring intelligence to life through systems'
@@ -27,7 +27,7 @@ export default function ProblemSolution() {
       aria-label="What We Do - Who We Are"
       style={{
         position: 'relative',
-        backgroundColor: '#FF5B20',
+        backgroundColor: '#C93227',
         color: '#FFFFFF',
         width: '100%',
         minHeight: 'clamp(580px, 80vh, 920px)',

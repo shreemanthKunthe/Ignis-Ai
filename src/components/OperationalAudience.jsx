@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 /**
@@ -89,7 +89,7 @@ export default function OperationalAudience() {
                     display: 'inline-block',
                     width: '5px',
                     height: '5px',
-                    backgroundColor: '#FF531B'
+                    backgroundColor: '#C93227'
                   }}
                   aria-hidden="true"
                 />
@@ -173,7 +173,7 @@ export default function OperationalAudience() {
                   gridTemplateColumns: 'clamp(64px, 7vw, 96px) minmax(240px, 1.2fr) minmax(280px, 1.5fr) minmax(180px, 0.9fr)',
                   gap: 'clamp(20px, 3.5vw, 48px)',
                   alignItems: 'baseline',
-                  backgroundColor: isHovered ? 'rgba(255, 83, 27, 0.015)' : 'transparent',
+                  backgroundColor: isHovered ? 'rgba(201, 50, 39, 0.015)' : 'transparent',
                   transition: 'background-color 200ms ease'
                 }}
               >
@@ -185,7 +185,7 @@ export default function OperationalAudience() {
                     fontSize: '0.875rem',
                     fontWeight: 600,
                     letterSpacing: '0.08em',
-                    color: isHovered ? '#FF531B' : 'var(--ignis-muted)',
+                    color: isHovered ? '#C93227' : 'var(--ignis-muted)',
                     transition: 'color 200ms ease'
                   }}
                 >

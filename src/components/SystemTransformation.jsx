@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 /**
@@ -85,7 +85,7 @@ export default function SystemTransformation() {
                     display: 'inline-block',
                     width: '5px',
                     height: '5px',
-                    backgroundColor: '#FF531B'
+                    backgroundColor: '#C93227'
                   }}
                   aria-hidden="true"
                 />
@@ -253,7 +253,7 @@ export default function SystemTransformation() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              backgroundColor: hoveredPhase === 'ignis' ? 'rgba(255, 83, 27, 0.025)' : 'transparent',
+              backgroundColor: hoveredPhase === 'ignis' ? 'rgba(201, 50, 39, 0.025)' : 'transparent',
               transition: 'background-color 220ms ease'
             }}
           >
@@ -266,7 +266,7 @@ export default function SystemTransformation() {
                   fontWeight: 600,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: '#FF531B',
+                  color: '#C93227',
                   marginBottom: '16px'
                 }}
               >
@@ -281,7 +281,7 @@ export default function SystemTransformation() {
                   fontWeight: 700,
                   letterSpacing: '-0.03em',
                   lineHeight: 1.15,
-                  color: '#FF531B',
+                  color: '#C93227',
                   margin: 0,
                   marginBottom: '28px'
                 }}
@@ -316,7 +316,7 @@ export default function SystemTransformation() {
                     gap: '10px'
                   }}
                 >
-                  <span style={{ color: '#FF531B', fontSize: '0.8125rem' }} aria-hidden="true">
+                  <span style={{ color: '#C93227', fontSize: '0.8125rem' }} aria-hidden="true">
                     →
                   </span>
                   <span>{verb}</span>
@@ -400,7 +400,7 @@ export default function SystemTransformation() {
                     style={{
                       width: '5px',
                       height: '5px',
-                      backgroundColor: '#FF531B',
+                      backgroundColor: '#C93227',
                       display: 'inline-block'
                     }}
                     aria-hidden="true"

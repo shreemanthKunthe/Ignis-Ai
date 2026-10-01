@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import InteractiveAIHead from './InteractiveAIHead';
 import GetStartedButton from './GetStartedButton';
 
@@ -152,15 +152,15 @@ export default function Hero({ isReady = true }) {
           0% {
             opacity: 0;
             transform: translateY(24px);
-            color: #FF5A1F;
+            color: #C93227;
           }
           32% {
             opacity: 1;
             transform: translateY(0);
-            color: #FF5A1F;
+            color: #C93227;
           }
           62% {
-            color: #FF5A1F;
+            color: #C93227;
           }
           100% {
             opacity: 1;

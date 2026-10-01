@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 /**
@@ -85,7 +85,7 @@ export default function PhilosophyTrust() {
                     display: 'inline-block',
                     width: '5px',
                     height: '5px',
-                    backgroundColor: '#FF531B'
+                    backgroundColor: '#C93227'
                   }}
                   aria-hidden="true"
                 />
@@ -169,7 +169,7 @@ export default function PhilosophyTrust() {
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   minHeight: '300px',
-                  backgroundColor: isHovered ? 'rgba(255, 83, 27, 0.015)' : 'transparent',
+                  backgroundColor: isHovered ? 'rgba(201, 50, 39, 0.015)' : 'transparent',
                   transition: 'background-color 200ms ease'
                 }}
               >

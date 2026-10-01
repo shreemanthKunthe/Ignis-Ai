@@ -1,8 +1,8 @@
-import React from 'react';
+﻿import React from 'react';
 
 /**
  * Ignis official brand lockup:
- * Three slanted licks mark in flat Ignis Coral (#E8483D) + editorial wordmark with coral period.
+ * Three slanted licks mark in flat Ignis Coral (#C93227) + editorial wordmark with coral period.
  */
 export default function IgnisLogo({ showMark = true, height = 24, className = '' }) {
   return (

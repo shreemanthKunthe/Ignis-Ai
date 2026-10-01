@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 /**
  * "Get started" black pill-shaped CTA button.
@@ -17,7 +17,7 @@ export default function GetStartedButton({
 
   const isCoral = variant === 'coral';
   const bgColor = isCoral
-    ? (isHovered ? '#E84510' : '#FF5B20')
+    ? (isHovered ? '#A8261D' : '#C93227')
     : (isHovered ? '#261B19' : 'var(--ignis-pill-bg)');
 
   return (

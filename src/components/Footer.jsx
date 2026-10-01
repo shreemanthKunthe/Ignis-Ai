@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 
 /**
  * Ignis Footer Component
@@ -33,7 +33,7 @@ export default function Footer() {
         if (r >= 4 && dist <= flameRadius) {
           const coreDist = dist / (flameRadius + 0.001);
           if (coreDist < 0.25) {
-            color = '#FF4D24'; // Vibrant core
+            color = '#C93227'; // Vibrant core
             opacity = 1;
           } else if (coreDist < 0.5) {
             color = '#FF6E4A'; // Medium coral
@@ -102,11 +102,11 @@ export default function Footer() {
                 >
                   <path
                     d="M10 40C4 35 0 26 0 17C0 11.5 2 6.5 5.5 2.5C6 1.8 7 2.2 7 3C6.5 8 9 13.5 12 17C14.5 19.8 17 22 17 26C17 29.5 14 34.5 10 40Z"
-                    fill="#FF531B"
+                    fill="#C93227"
                   />
                   <path
                     d="M22 41C16.5 37 13 29 13 20C13 14 15.5 8.5 19.5 4C20.2 3.2 21.2 3.7 21.2 4.6C20.5 10 23.5 16 27 20C30 23.5 33 26.5 33 30.5C33 34.5 28.5 39 22 41Z"
-                    fill="#FF531B"
+                    fill="#C93227"
                     opacity="0.9"
                   />
                 </svg>

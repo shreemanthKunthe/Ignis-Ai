@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 /**
@@ -100,7 +100,7 @@ export default function FAQ() {
                     display: 'inline-block',
                     width: '5px',
                     height: '5px',
-                    backgroundColor: '#FF531B'
+                    backgroundColor: '#C93227'
                   }}
                   aria-hidden="true"
                 />
@@ -198,7 +198,7 @@ export default function FAQ() {
                           fontWeight: 600,
                           lineHeight: 1.3,
                           letterSpacing: '-0.025em',
-                          color: isOpen ? '#FF531B' : 'var(--ignis-ink)',
+                          color: isOpen ? '#C93227' : 'var(--ignis-ink)',
                           transition: 'color 180ms ease'
                         }}
                       >
@@ -212,7 +212,7 @@ export default function FAQ() {
                           fontSize: '1.35rem',
                           fontWeight: 300,
                           lineHeight: 1,
-                          color: isOpen ? '#FF531B' : 'var(--ignis-muted)',
+                          color: isOpen ? '#C93227' : 'var(--ignis-muted)',
                           flexShrink: 0,
                           display: 'inline-block',
                           transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',

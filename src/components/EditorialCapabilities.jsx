@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 /**
  * EditorialCapabilities Component (What We Build)
@@ -87,7 +87,7 @@ export default function EditorialCapabilities() {
                   display: 'inline-block',
                   width: '5px',
                   height: '5px',
-                  backgroundColor: '#FF531B',
+                  backgroundColor: '#C93227',
                   flexShrink: 0
                 }}
                 aria-hidden="true"
@@ -216,7 +216,7 @@ export default function EditorialCapabilities() {
                         display: 'inline-block',
                         width: '4px',
                         height: '4px',
-                        backgroundColor: '#FF531B',
+                        backgroundColor: '#C93227',
                         transition: 'transform 200ms ease',
                         transform: isHovered ? 'scale(1.3)' : 'scale(1)'
                       }}
@@ -320,7 +320,7 @@ export default function EditorialCapabilities() {
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
-                              color: isHovered ? '#FF531B' : 'var(--ignis-muted)',
+                              color: isHovered ? '#C93227' : 'var(--ignis-muted)',
                               opacity: isHovered ? 1 : 0.5,
                               transition: 'color 200ms ease, opacity 200ms ease'
                             }}

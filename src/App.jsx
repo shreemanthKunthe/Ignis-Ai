@@ -5,6 +5,9 @@ import Hero from './components/Hero';
 import ProblemSolution from './components/ProblemSolution';
 import EditorialCapabilities from './components/EditorialCapabilities';
 import SystemTransformation from './components/SystemTransformation';
+import ToolIntegrations from './components/ToolIntegrations';
+import OneBrainSection from './components/OneBrainSection';
+import AuditableHistory from './components/AuditableHistory';
 import FourStepProcess from './components/FourStepProcess';
 import OperationalAudience from './components/OperationalAudience';
 import PhilosophyTrust from './components/PhilosophyTrust';
@@ -50,14 +53,23 @@ export default function App() {
         {/* 03 LOCKED WHAT WE BUILD (EDITORIAL THREE-ROW ARCHITECTURE) */}
         <EditorialCapabilities />
 
-        {/* 04 WHAT IGNIS SYSTEMS ACTUALLY DO */}
-        <SystemTransformation />
+        {/* 04 WHAT IGNIS SYSTEMS ACTUALLY DO (temporarily hidden) */}
+        {/* <SystemTransformation /> */}
+
+        {/* 04-A YOUR WORK IS PERSONAL — TOOL INTEGRATIONS */}
+        <ToolIntegrations />
+
+        {/* 04-B ONE BRAIN. ANY MODEL. */}
+        <OneBrainSection />
+
+        {/* 04-C EVERY RUN LEAVES A READABLE HISTORY + BETTER WORK IN 3 WAYS */}
+        <AuditableHistory />
 
         {/* 05 HOW WE BUILD THEM (FROM FRICTION TO FLOW) */}
         <FourStepProcess />
 
-        {/* 06 WHO THEY ARE FOR (REAL BUSINESS PROBLEMS) */}
-        <OperationalAudience />
+        {/* 06 WHO THEY ARE FOR (temporarily hidden) */}
+        {/* <OperationalAudience /> */}
 
         {/* 07 ENGINEERING PRINCIPLES (ENGINEERING WITH JUDGEMENT) */}
         <PhilosophyTrust />
